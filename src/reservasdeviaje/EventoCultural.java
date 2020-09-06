@@ -9,7 +9,7 @@ package reservasdeviaje;
  *
  * @author ruzbe
  */
-public class EventosCulturales {
+public class EventoCultural {
     
     private String nombreEventos;
     private String ciudad;
@@ -18,7 +18,7 @@ public class EventosCulturales {
     private String fecha;
     private String lugar;
     
-    EventosCulturales(String nombreEventos, String ciudad, double costo, 
+    EventoCultural(String nombreEventos, String ciudad, double costo, 
             String horario, String fecha, String lugar){
        this.nombreEventos = nombreEventos;
        this.ciudad = ciudad;
