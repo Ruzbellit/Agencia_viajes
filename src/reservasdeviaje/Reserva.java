@@ -48,5 +48,22 @@ public class Reserva {
         this.costoEventos = costoEventos;
     }
     
+    public String getIdentCliente(){
+        return this.idCliente;
+    }
+    
+    public double costoTotalHotel(){
+        return this.costoHotel * this.diasViaje * this.viajeros;
+    }
+
+    public double costoViajeTotal() {
+        return costoTotalHotel() +  this.costoEventos + 
+                this.costoTransporte + this.costoAerolinea;
+    }
+    
+    public String getInformacion() {
+        String infoReserva = "";
+        return infoReserva;
+    }
     
 }
