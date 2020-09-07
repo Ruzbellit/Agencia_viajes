@@ -41,18 +41,20 @@ public class ReservasDeViaje {
 
   public void ingresarInformacion()
   {
-      int opcion = 0;
+      String opcion = "";
       do
       {
-          opcion = Integer.parseInt(JOptionPane.showInputDialog("Escoga el tipo de informacion que desea ingresar\n"
-                  + "1. Hotel\n"
-                  + "2. Aerolínea\n"
-                  + "3. Medios de Transporte\n"
-                  + "4. Eventos Culturales\n"
-                  + "5. Regresar al Menú"));
+
+          opcion = JOptionPane.showInputDialog("Escoga el tipo de informacion que desea ingresar\n"
+              + "1. Hotel\n"
+              + "2. Aerolínea\n"
+              + "3. Medios de Transporte\n"
+              + "4. Eventos Culturales\n"
+              + "5. Regresar al Menú"); 
+
           switch(opcion)
           {
-              case 1: //hotel
+              case "1": //hotel
                   String nombreH = JOptionPane.showInputDialog("Ingrese nombre del hotel").trim();
                   String estrellas = JOptionPane.showInputDialog("Ingrese la calificacion de estrellas").trim();
                   String ciudadH = JOptionPane.showInputDialog("Ingrese la ciudad del hotel").trim();
@@ -64,11 +66,11 @@ public class ReservasDeViaje {
                           + nombreH + "\n" + estrellas + "\n" + ciudadH + "\n" + precio);
                   JOptionPane.showMessageDialog(null, barras);
                   break;
-              case 2: //aerolinea
+              case "2": //aerolinea
                   
                   break;
                   
-              case 3: //medios de transporte
+              case "3": //medios de transporte
                   String ciudadT = JOptionPane.showInputDialog("Ingrese la ciudad").trim();
                   double precioBus = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el costo del pasaje del bus"));
                   double precioChiva = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el costo del pasaje de chiva"));
@@ -81,7 +83,7 @@ public class ReservasDeViaje {
                   JOptionPane.showMessageDialog(null, barras);
                   break;
                   
-              case 4: //eventos culturales
+              case "4": //eventos culturales
                   String nombreE = JOptionPane.showInputDialog("Ingrese el nombre del evento").trim();
                   String ciudadE = JOptionPane.showInputDialog("Ingrese la ciudad").trim();
                   double costo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el costo por persona"));
@@ -96,14 +98,14 @@ public class ReservasDeViaje {
                   JOptionPane.showMessageDialog(null, barras);
                   break;
                   
-              case 5:
+              case "5":
                   break;
                   
               default:
                   JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                   break;
           }
-      }while(opcion != 5);
+      }while(!opcion.equals("5"));
   }
 
   public void catalogo()
@@ -165,10 +167,10 @@ public class ReservasDeViaje {
   
   public void menu()
   {
-      int opcion;
+      String opcion;
       do
       {
-        opcion = Integer.parseInt(JOptionPane.showInputDialog("Viajemos por Colombia:\n"
+        opcion =JOptionPane.showInputDialog("Viajemos por Colombia:\n"
             + "1. Ingresar Informacion\n"
             + "2. Consultar Opciones Disponibles\n"
             + "3. Listar Hoteles\n"
@@ -176,38 +178,38 @@ public class ReservasDeViaje {
             + "5. Realizar Reservacion\n"
             + "6. Consultar Reserva\n"
             + "7. Estadisticas\n"
-            + "8. Salir"));
+            + "8. Salir");
       
         switch(opcion)
         {
-            case 1: //ingresar informacion
+            case "1": //ingresar informacion
                 ingresarInformacion();
                 break;
-            case 2: // consultar todas las opciones disponibles
+            case "2": // consultar todas las opciones disponibles
                 catalogo();
                 break;
-            case 3: //listar hoteles
+            case "3": //listar hoteles
                 listarHoteles();
                 break;
-            case 4: //listar eventos culturales
+            case "4": //listar eventos culturales
                 listarEventosCulturales();
                 break;
-            case 5: //realizar reserva
+            case "5": //realizar reserva
                 realizarReserva();
                 break;
-            case 6: //consultar reservaciones
+            case "6": //consultar reservaciones
                 consultarReserva();
                 break;
-            case 7: //mostrar estadisticas
+            case "7": //mostrar estadisticas
                 estadisticas();
                 break;
-            case 8:
+            case "8":
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                 break;
         }
-      }while(opcion != 8);
+      }while(!opcion.equals("8"));
   }
   
     /**
