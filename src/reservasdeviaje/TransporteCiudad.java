@@ -18,12 +18,12 @@ class TransporteCiudad
   private String ciudad;
   private double precioBus, precioChiva, precioBicicleta;
 
-  TransporteCiudad()
+  TransporteCiudad(String ciudad, double precioBus, double precioChiva, double precioBicicleta)
   {
-    ciudad = JOptionPane.showInputDialog("Digite la ciudad");
-    precioBus = Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del transporte del bus"));
-    precioChiva = Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del transporte del bus"));
-    precioBicicleta = Double.parseDouble(JOptionPane.showInputDialog("Digite el precio del transporte del bus"));
+    this.ciudad = ciudad;
+    this.precioBus = precioBus;
+    this.precioChiva = precioChiva;
+    this.precioBicicleta = precioBicicleta;
   }
 
   public double getPrecio(String tipoTransporte)
