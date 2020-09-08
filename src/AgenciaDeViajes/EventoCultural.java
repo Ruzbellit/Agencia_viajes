@@ -44,13 +44,6 @@ public class EventoCultural {
         return this.fecha;
     }
     
-    public String getInfoReserva(){
-        String infoToReserva = "Nombre Evento: " + getNombre() + "\nHorario: " +
-                this.horario + "\nFecha: " + getFecha() + "\nLugar: " + this.lugar;
-        return infoToReserva;
-    }
-    
-    //para listar la informacion completa de el objeto
     public String getInformacion(){
         String infoTotal = "Nombre Evento: " + getNombre() + "\nCosto:" + this.costo + "\nHorario: " +
                 this.horario + "\nFecha: " + getFecha() + "\nLugar: " + this.lugar;
