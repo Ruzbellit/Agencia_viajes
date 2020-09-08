@@ -62,7 +62,15 @@ public class Reserva {
     }
     
     public String getInformacion() {
-        String infoReserva = "";
+        String infoReserva = "Nombre Cliente: " + this.nombreCliente + "\n" + "ID Cliente: " + this.idCliente + "\n" +
+                "Fecha de Viaje: " + this.fechaViaje + "\n" + "Cantidad de Viajeros: " + this.viajeros + "\n" + 
+                "Ciudad Origen: " + this.ciudadOrigen + "\n" + "Ciudad Destino: " + this.ciudadDestino + "\n" +
+                "Dias de Viaje: " + Integer.toString(this.diasViaje) + "\n" + "Nombre Hotel: " + this.nombreHotel + "\n" +
+                "Costo Hotel: " + Double.toString(this.costoHotel) + "\n" + "Nombre Aerolinea" + this.nombreAerolinea + "\n" +
+                "Costo Aerolina: " + Double.toString(this.costoAerolinea) + "\n" + "Tipo Transporte: " +  this.tipoTransporte + "\n" +
+                "Costo Transporte: " + Double.toString(this.costoTransporte) + "\n" + "Informacion Eventos: " + "\n" + 
+                this.infoEventos + "\n" + "CostoEventos: " + Double.toString(this.costoEventos);
+                
         return infoReserva;
     }
     
