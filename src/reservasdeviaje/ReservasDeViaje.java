@@ -101,7 +101,7 @@ public class ReservasDeViaje {
               case "5":
                   break;
                   
-              default:
+              default: 
                   JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                   break;
           }
@@ -111,7 +111,13 @@ public class ReservasDeViaje {
   public void catalogo()
   {
       JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
+      String ciudadDestino = JOptionPane.showInputDialog("Ingrese la ciudad de destino");
+      double valorMinimo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor minimo del viaje"));
+      double valorMaximo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor maximo del viaje"));
+      int cantidadPersonas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas a viajar"));
       
+      listarHoteles(ciudadDestino);
+
   }
 
   public void listarHoteles()
@@ -128,12 +134,41 @@ public class ReservasDeViaje {
       */
   }
   
+  public void listarHoteles(String ciudad)
+  {
+      /*
+      String datos = null;
+      for(EventoCultural x: hoteles)
+      {
+          if(x.getCiudad().equals(ciudad))
+          {
+            datos += x.getInformacion();
+          }
+      }
+      area.setText(datos);
+      JOptionPane.showMessageDialog(null, barras);
+      */
+  }
+  
   public void listarEventosCulturales()
   {
       String datos = "";
       for(EventoCultural x: eventosCulturales)
       {
           datos += x.getInformacion();
+      }
+      area.setText(datos);
+      JOptionPane.showMessageDialog(null, barras);
+  }
+  
+  public void listarEventosCulturales(String ciudad)
+  {
+      String datos = "";
+      for(EventoCultural x: eventosCulturales)
+      {
+          if(x.getCiudad().equals(ciudad)){
+            datos += x.getInformacion();
+          }
       }
       area.setText(datos);
       JOptionPane.showMessageDialog(null, barras);
@@ -155,14 +190,12 @@ public class ReservasDeViaje {
               JOptionPane.showMessageDialog(null, barras);
               break;
           }
-      }
-      
+      } 
   }
 
   public void estadisticas()
   {
       JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
-
   }
   
   public void menu()
