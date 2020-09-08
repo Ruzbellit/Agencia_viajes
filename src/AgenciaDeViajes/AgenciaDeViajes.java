@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author ruzbe
  */
-public class ReservasDeViaje {
+public class AgenciaDeViajes {
 
     //declaracion de los array de reservas, hoteles, aerolineas y transportes
     ArrayList<Reserva> reservaciones;
@@ -25,7 +25,7 @@ public class ReservasDeViaje {
     JTextArea area;
     JScrollPane barras;
   
-  ReservasDeViaje()
+  AgenciaDeViajes()
   {
         //inicializamos las listas
         reservaciones = new ArrayList<>();
@@ -250,7 +250,7 @@ public class ReservasDeViaje {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ReservasDeViaje app = new ReservasDeViaje();
+        AgenciaDeViajes app = new AgenciaDeViajes();
         app.menu();
     }
    
