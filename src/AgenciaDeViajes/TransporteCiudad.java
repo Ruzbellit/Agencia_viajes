@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package reservasdeviaje;
+package AgenciaDeViajes;
 
 import java.util.*;
 import javax.swing.*;
