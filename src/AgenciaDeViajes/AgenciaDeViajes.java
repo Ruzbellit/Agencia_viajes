@@ -7,17 +7,17 @@ package AgenciaDeViajes;
 
 import javax.swing.*;
 import java.util.*;
-
+import java.time.*;
 /**
  *
- * @author ruzbe
+ * @author villa
  */
 public class AgenciaDeViajes {
 
     //declaracion de los array de reservas, hoteles, aerolineas y transportes
     ArrayList<Reserva> reservaciones;
-    //ArrayList<Hotel> hoteles;
-    //ArrayList<Aerolinea> aerolineas;
+    ArrayList<Hotel> hoteles;
+    ArrayList<Aerolinea> aerolineas;
     ArrayList<EventoCultural> eventosCulturales;
     ArrayList<TransporteCiudad> transportes;
 
@@ -25,20 +25,24 @@ public class AgenciaDeViajes {
     JTextArea area;
     JScrollPane barras;
   
+  /**
+   * inicializa las listas y las areas de texto
+   */
   AgenciaDeViajes()
   {
-        //inicializamos las listas
         reservaciones = new ArrayList<>();
-        //hoteles = new ArrayList<>();
-        //aerolineas = new ArrayList<>();
+        hoteles = new ArrayList<>();
+        aerolineas = new ArrayList<>();
         eventosCulturales = new ArrayList();
         transportes = new ArrayList<>();
         
-        //creación del area de texto
         area = new JTextArea();
         barras = new JScrollPane(area);
   }
 
+  /**
+   * permite ingresar informacion de alguno de las opciones disponibles
+   */
   public void ingresarInformacion()
   {
       String opcion = "";
@@ -56,18 +60,18 @@ public class AgenciaDeViajes {
           {
               case "1": //hotel
                   String nombreH = JOptionPane.showInputDialog("Ingrese nombre del hotel").trim();
-                  String estrellas = JOptionPane.showInputDialog("Ingrese la calificacion de estrellas").trim();
+                  int estrellas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la calificacion de estrellas").trim());
                   String ciudadH = JOptionPane.showInputDialog("Ingrese la ciudad del hotel").trim();
                   double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese nombre del hotel"));
                   
-                  //hoteles.add(Hotel(nombreH, estrellas, ciudadH, precio));
+                  hoteles.add(new Hotel(estrellas, nombreH, ciudadH, precio));
                   
                   area.setText("Informacion del hotel ingresado con exito\n"
                           + nombreH + "\n" + estrellas + "\n" + ciudadH + "\n" + precio);
                   JOptionPane.showMessageDialog(null, barras);
                   break;
               case "2": //aerolinea
-                  
+                  JOptionPane.showMessageDialog(null, "Opcion no disponible en el momento");
                   break;
                   
               case "3": //medios de transporte
@@ -108,77 +112,209 @@ public class AgenciaDeViajes {
       }while(!opcion.equals("5"));
   }
 
+  /**
+   * lista las posibles opciones a escoger de acuerdo a los parametros ingresados
+   */
   public void catalogo()
   {
-      JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
       String ciudadDestino = JOptionPane.showInputDialog("Ingrese la ciudad de destino");
       double valorMinimo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor minimo del viaje"));
       double valorMaximo = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor maximo del viaje"));
       int cantidadPersonas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas a viajar"));
       
       listarHoteles(ciudadDestino);
-
   }
 
-  public void listarHoteles()
+  /**
+   * lista todos los hoteles
+   * @return 
+   */
+  public String listarHoteles()
   {
-      JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
-      /*
-      String datos = null;
-      for(EventoCultural x: hoteles)
+      if(!hoteles.isEmpty())
       {
-          datos += x.getInformacion();
+        String datos = "";
+        for(Hotel x: hoteles)
+        {
+            datos += x.getInformacion();
+        }
+        datos += "\n";
+        return datos;
+      }else
+      {
+        return "No hay hoteles listados";
       }
-      area.setText(datos);
-      JOptionPane.showMessageDialog(null, barras);
-      */
   }
   
-  public void listarHoteles(String ciudad)
+  /**
+   * lista los hoteles de acuerdo a la ciudad solicitada
+   * @param ciudad
+   * @return 
+   */
+  public String listarHoteles(String ciudad)
   {
-      /*
-      String datos = null;
-      for(EventoCultural x: hoteles)
+      if(!hoteles.isEmpty())
       {
+        String datos = "";
+        for(Hotel x: hoteles)
+        {
           if(x.getCiudad().equals(ciudad))
           {
             datos += x.getInformacion();
           }
+        }
+        datos += "\n";
+        return datos;
+      }else
+      {
+          return "No hay hoteles listados para esta ciudad";
       }
-      area.setText(datos);
-      JOptionPane.showMessageDialog(null, barras);
-      */
   }
   
-  public void listarEventosCulturales()
+  /**
+   * lista los hoteles de acuerdo a la ciudad y cantidad de estrellas solicitada
+   * @param ciudad
+   * @param estrellas
+   * @return 
+   */
+  public String listarHoteles(String ciudad, int estrellas)
   {
-      String datos = "";
-      for(EventoCultural x: eventosCulturales)
+      if(!hoteles.isEmpty())
       {
-          datos += x.getInformacion();
+        String datos = "";
+        int enumerador = 1;
+        boolean disponible = false;
+        for(Hotel x: hoteles)
+        {
+          if(x.getCiudad().equals(ciudad) && x.getEstrellas() == estrellas)
+          {
+            datos += enumerador + ". " + x.getInformacion();
+            enumerador ++;
+            disponible = true;
+          }
+        }
+        if(disponible){
+            datos += "\n";
+            return datos; 
+        }else
+        {
+            return "No hay hoteles listados para esta ciudad\ny con la calificacion en estrellas deseada";
+        }
+      }else{
+          return "No hay hoteles listados para esta ciudad\ny con la calificacion en estrellas deseada";
       }
-      area.setText(datos);
-      JOptionPane.showMessageDialog(null, barras);
   }
   
-  public void listarEventosCulturales(String ciudad)
+  /**
+   * lista todos los eventos
+   * @return 
+   */
+  public String listarEventosCulturales()
   {
-      String datos = "";
-      for(EventoCultural x: eventosCulturales)
-      {
-          if(x.getCiudad().equals(ciudad)){
+      if(!eventosCulturales.isEmpty()){
+        String datos = "";
+        for(EventoCultural x: eventosCulturales)
+        {
             datos += x.getInformacion();
+        }
+        datos += "\n";
+        return datos;
+      }else
+      {
+        return "No hay eventos culturales listados";
+      }
+  }
+  
+  /**
+   * 
+   * @param ciudad
+   * @return 
+   */
+  public String listarEventosCulturales(String ciudad)
+  {
+      if(!eventosCulturales.isEmpty())
+      {
+        String datos = "";
+        for(EventoCultural x: eventosCulturales)
+        {
+            if(x.getCiudad().equals(ciudad)){
+              datos += x.getInformacion();
+            }
+        }
+        datos += "\n";
+        return datos;
+      }else
+      {
+          return "No hay eventos culturales listados para esta ciudad";
+      }
+  }
+  
+  /**
+   * 
+   * @param ciudad
+   * @return 
+   */
+  public String listarTransporteCiudad(String ciudad){
+      for(TransporteCiudad x: transportes)
+      {
+          if(x.getCiudad().equals(ciudad))
+          {
+              return x.getPreciosTransporte();
           }
       }
-      area.setText(datos);
-      JOptionPane.showMessageDialog(null, barras);
+      return "No hay medios de transporte listados para esta ciudad";
   }
   
+  /**
+   * 
+   */
   public void realizarReserva()
-  {
-      JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
+  {      
+      String ciudadDestinoReserva = JOptionPane.showInputDialog("Ingrese ciudad de destino");
+      
+      int estrellasHotelReserva = Integer.parseInt(JOptionPane.showInputDialog("Ingrese las estrellas del hotel deseado"));
+      String escogerHotel = "Introduzca el nombre del hotel deseado:\n" + listarHoteles(ciudadDestinoReserva, estrellasHotelReserva);
+      String nombreHotel = JOptionPane.showInputDialog(escogerHotel);
+      double costoHotel = 0;
+      for(Hotel x: hoteles)
+      {
+          if(x.getNombre().equals(nombreHotel))
+          {
+              costoHotel = x.getPrecio();
+              break;
+          }
+      }
+      
+      String aerolineaReserva = JOptionPane.showInputDialog("Escoja la aerolinea deseada");
+      
+      int personasAViajar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas viajar"));
+      
+      String escogerMedioTransporte = "Introduza el tipo de medio de transporte deseado\n" + listarTransporteCiudad(ciudadDestinoReserva);
+      String tipoTransporteDeseado = JOptionPane.showInputDialog(escogerMedioTransporte);
+      double costoTransporte = 0;
+      for(TransporteCiudad x: transportes)
+      {
+          if(x.getCiudad().equals(ciudadDestinoReserva))
+          {
+              costoTransporte = x.getPrecio(ciudadDestinoReserva);
+              break;
+          }
+      }
+      
+      JOptionPane.showInputDialog("Escoja los eventos culturales a visitar");
+      
+
+      //Date fff = LocalDate.of(2018,10,23);
+      LocalDate fechaViaje = LocalDate.parse(JOptionPane.showInputDialog("Ingrese fecha de viaje (yyyy-MM-dd)"));
+      String idClienteReserva = JOptionPane.showInputDialog("Ingrese la cedula para guardar la reserva");
+      
+      reservaciones.add(new Reserva("Cliente", idClienteReserva, "fecha de viaje", personasAViajar, ciudadDestinoReserva, ciudadDestinoReserva, 5, nombreHotel, costoHotel, "nombreAerolinea", 10, tipoTransporteDeseado, costoTransporte, "eventos", 3));
+      
   }
 
+  /**
+   * busca una reserva de acuerdo con el numero de identidad a la cual fue guardada la reserva
+   */
   public void consultarReserva()
   {
       String buscarReserva = JOptionPane.showInputDialog("Ingrese el documento de identidad del cliente").trim();
@@ -193,11 +329,35 @@ public class AgenciaDeViajes {
       } 
   }
 
+  /**
+   * muestra la ciudad mas solicitada para viajar y los hoteles preferidos por los usuarios
+   */
   public void estadisticas()
   {
       JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
+      /*
+      for(Reserva x: reservaciones)
+      {
+          x.getCiudad();
+      }
+      
+      */
   }
   
+  /**
+   * agrega un hotel, una aerolinea, un evento y medios de transportes a las listas iniciales
+   */
+  public void listadoDePrueba()
+  {
+      hoteles.add(new Hotel(3, "prueba", "cali", 15000));
+      aerolineas.add(new Aerolinea("Avianca"));
+      eventosCulturales.add(new EventoCultural("feria", "cali", 4000, "5 P.M - 10 P.M", "2020-12-25", "Autopista SurOriental"));
+      transportes.add(new TransporteCiudad("cali", 2000, 1500, 1000));
+  }
+  
+  /**
+   * 
+   */
   public void menu()
   {
       String opcion;
@@ -211,7 +371,8 @@ public class AgenciaDeViajes {
             + "5. Realizar Reservacion\n"
             + "6. Consultar Reserva\n"
             + "7. Estadisticas\n"
-            + "8. Salir");
+            + "8. Insertar listados de prueba\n"
+            + "9. Salir");
       
         switch(opcion)
         {
@@ -222,10 +383,12 @@ public class AgenciaDeViajes {
                 catalogo();
                 break;
             case "3": //listar hoteles
-                listarHoteles();
+                area.setText(listarHoteles());
+                JOptionPane.showMessageDialog(null, barras);
                 break;
             case "4": //listar eventos culturales
-                listarEventosCulturales();
+                area.setText(listarEventosCulturales());
+                JOptionPane.showMessageDialog(null, barras);
                 break;
             case "5": //realizar reserva
                 realizarReserva();
@@ -236,13 +399,16 @@ public class AgenciaDeViajes {
             case "7": //mostrar estadisticas
                 estadisticas();
                 break;
-            case "8":
+            case "8": //insertar listado de prueba
+                listadoDePrueba();
+                break;
+            case "9": //salir
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                 break;
         }
-      }while(!opcion.equals("8"));
+      }while(!opcion.equals("9"));
   }
   
     /**
