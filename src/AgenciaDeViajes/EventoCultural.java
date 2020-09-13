@@ -5,6 +5,7 @@
  */
 package AgenciaDeViajes;
 import javax.swing.*;
+import java.time.*;
 /**
  *
  * @author ruzbe
@@ -15,7 +16,7 @@ public class EventoCultural {
     private String ciudad;
     private double costo;
     private String horario;
-    private String fecha;
+    private LocalDate fecha;
     private String lugar;
     
     EventoCultural(String nombreEvento, String ciudad, double costo, 
@@ -24,7 +25,7 @@ public class EventoCultural {
        this.ciudad = ciudad;
        this.costo = costo;
        this.horario = horario;
-       this.fecha = fecha;
+       this.fecha = LocalDate.parse(fecha);
        this.lugar = lugar;
    }
     
@@ -40,13 +41,17 @@ public class EventoCultural {
         return this.costo;
     }
     
-    public String getFecha(){
+    public LocalDate getFecha(){
         return this.fecha;
     }
     
     public String getInformacion(){
-        String infoTotal = "Nombre Evento: " + getNombre() + "\nCosto:" + this.costo + "\nHorario: " +
-                this.horario + "\nFecha: " + getFecha() + "\nLugar: " + this.lugar;
+        String infoTotal = "Evento: " + getNombre() +
+                "\nCiudad: " + this.ciudad +
+                "\nCosto: " + this.costo +
+                "\nHorario: " + this.horario +
+                "\nFecha: " + this.fecha.toString() +
+                "\nLugar: " + this.lugar;
         return infoTotal;
     }
 

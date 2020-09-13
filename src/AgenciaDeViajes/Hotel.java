@@ -51,8 +51,10 @@ public class Hotel {
     
     public String getInformacion(){
     
-        String infoHotel = "Nombre del hotel: "+ getNombre() +"\nEstrellas: " +
-                getEstrellas() +"\nCiudad: "+ getCiudad() + "\n Precio: "+ getPrecio()  ;
+        String infoHotel = "Nombre: "+ getNombre() +
+                "\nEstrellas: " + getEstrellas() +
+                "\nCiudad: " + getCiudad() +
+                "\nPrecio: " + getPrecio();
         
         return infoHotel;
     }

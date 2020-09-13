@@ -32,21 +32,22 @@ class TransporteCiudad
   {
     switch(tipoTransporte)
     {
-      case "bus":
+      case "BUS":
         return precioBus;
-      case "chiva":
+      case "CHIVA":
         return precioChiva;
-      case "bicicleta":
+      case "BICLETA":
         return precioBicicleta;
       default:
         return 0;
     }
   }
 
-   public String getPreciosTransporte()
+   public String getInformacionPrecios()
    {
-       return "bus: " + precioBus + "\nchiva: " + precioChiva + "\nbicicleta: " + precioBicicleta;
+       return "Bus: " + precioBus +
+               "\nChiva: " + precioChiva +
+               "\nBicicleta: " + precioBicicleta;
    }
   
 }
-
