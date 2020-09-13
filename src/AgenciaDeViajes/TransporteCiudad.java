@@ -6,8 +6,6 @@
 
 package AgenciaDeViajes;
 
-import java.util.*;
-import javax.swing.*;
 
 /**
  *
@@ -26,18 +24,30 @@ class TransporteCiudad
     this.precioBicicleta = precioBicicleta;
   }
 
+  public String getCiudad(){
+      return ciudad;
+  }
+  
   public double getPrecio(String tipoTransporte)
   {
     switch(tipoTransporte)
     {
-      case "Bus":
+      case "BUS":
         return precioBus;
-      case "Chiva":
+      case "CHIVA":
         return precioChiva;
-      case "Bicicleta":
+      case "BICLETA":
         return precioBicicleta;
       default:
         return 0;
     }
   }
+
+   public String getInformacionPrecios()
+   {
+       return "Bus: " + precioBus +
+               "\nChiva: " + precioChiva +
+               "\nBicicleta: " + precioBicicleta;
+   }
+  
 }
