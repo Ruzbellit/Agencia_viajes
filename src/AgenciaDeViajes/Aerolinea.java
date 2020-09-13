@@ -7,9 +7,6 @@ package AgenciaDeViajes;
 
 
 import java.util.*;
-import javax.swing.JOptionPane;
-
-
 /**
  *
  * @author Daniel
@@ -70,5 +67,15 @@ public class Aerolinea {
       
       return precioVuelo;
       
-    }     
+    }
+    
+    public void agregarVuelo (String origen, String destino, double precio)
+    {   
+        
+        vuelos.add(new Vuelo(origen, destino, precio));
+        
+    }
+    
+    
+    
 }
