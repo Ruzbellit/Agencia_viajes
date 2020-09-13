@@ -16,7 +16,6 @@ public class Estudiante {
     private int semestre;
     private String plan;
     private double notas[];
-    private double promedio;
     
     Estudiante(String nombre, String codigo, int semestre,
             String plan, double nota1, double nota2, double nota3,
@@ -27,8 +26,6 @@ public class Estudiante {
         this.plan = plan;
         this.notas = new double[4];
         double notas[] = {nota1, nota2, nota3, nota4};
-        
-   
     }
     
     public String getNombre()
@@ -41,47 +38,30 @@ public class Estudiante {
         return this.codigo;
     }
     
-    public double[] getNotas()
+    public double[] getArrayNotas()
     {
-        return notas;
+        return this.notas;
     }
     
     public double getPromedio()
     {
         double suma = 0;
-        for(int i = 0; i < notas.length; i++)
+        for(double nota: this.notas)
         {
-           suma += notas[i];
+           suma += nota;
         }
         double elPromedio = suma/4;
-        this.promedio = elPromedio;
         return elPromedio;
     }
-    
-    public String getInfoPromedio()
-    {
-        String infoToPromed = "Nombre Estudiante: " + this.nombre + 
-                "Promedio: " + this.promedio;
-        return infoToPromed;
-    }
-    
-    public String todasLasNotas()
+
+    public String getStringNotas()
     {
         String acumulNotas = "\n";
-        for(int i = 0; i < notas.length; i++)
+        for(double nota: this.notas)
         {
-            acumulNotas = "Nota: " + Double.toString(notas[i]) + "\n";
+            acumulNotas = "Nota: " + Double.toString(nota) + "\n";
         }
         return acumulNotas;
     }
-    
-    public String getInfoTotal()
-    {
-        String infoTotal = "Nombre Estudiante: " + this.nombre + "Codigo: " +
-                this.codigo + "Semestre: " + Integer.toString(this.semestre) + 
-                "Plan De Estudio: " + this.plan + "Todas las Notas: " + todasLasNotas() +
-                "Promedio: " + this.promedio ;
-        return infoTotal;
-    }
-    
+
 }
