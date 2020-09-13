@@ -5,8 +5,6 @@
  */
 package AgenciaDeViajes;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Daniel
@@ -46,27 +44,13 @@ public class Vuelo {
         return this.precio;
     }
     
-    /*Funcion que indica si el trayecto de un vuelo se encuenta disponible o no*/
-    public boolean trayecto(String origen, String destino)
-     {
-       boolean vueloDisponible = true;
+    /*public boolean trayecto(String origen, String destino)
+    {
+        boolean confirmacion = true;
         
-      String buscarOrigen = JOptionPane.showInputDialog("Ingrese el origen del vuelo").trim();
-      String buscarDestino = JOptionPane.showInputDialog("Ingrese el destino del vuelo").trim();
-      
-                
-          if((this.getOrigen().equals(buscarOrigen)) && this.getDestino().equals(buscarDestino))
-          {
-              return vueloDisponible;
-          }
-          else 
-          {
-              vueloDisponible = false;
-          }
-      
-      return vueloDisponible;
-      
-     }
-    
+        if(origen == getOrigen() and destino == getDestino()
+        {    };
+    }
+    */
     
 }
