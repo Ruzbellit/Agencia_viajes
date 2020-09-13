@@ -36,44 +36,39 @@ public class Aerolinea {
      public boolean consultarVuelo(String origen, String destino)
      {
        boolean vueloDisponible = true;
-        
-      String buscarOrigen = JOptionPane.showInputDialog("Ingrese el origen del vuelo").trim();
-      String buscarDestino = JOptionPane.showInputDialog("Ingrese el destino del vuelo").trim();
       
       for (Vuelo x: vuelos)
+      {
           
-          if((x.getOrigen().equals(buscarOrigen)) && x.getDestino().equals(buscarDestino))
+          if((x.getOrigen().equals(origen)) && x.getDestino().equals(destino))
           {
               return vueloDisponible;
-                            
           }
           else 
           {
               vueloDisponible = false;
           }
+      }  
       
       return vueloDisponible;
       
      }
      
     /*Funcion que retorna el precio de un vuelo al consultar su origen y destino*/     
-    public double consultarPrecio(String origen, String destino)
-     {
-       double precioVuelo = 0;
+    public double precioVuelo(String origen, String destino)
+    {
+      double precioVuelo = 0;
          
-      String buscarOrigen = JOptionPane.showInputDialog("Ingrese el origen del vuelo").trim();
-      String buscarDestino = JOptionPane.showInputDialog("Ingrese el destino del vuelo").trim();
-      
       for (Vuelo x: vuelos)
-          
-          if((x.getOrigen().equals(buscarOrigen)) && x.getDestino().equals(buscarDestino))
+      {    
+          if((x.getOrigen().equals(origen)) && x.getDestino().equals(destino))
           {
               precioVuelo = x.getPrecio();
           }
-           
+      }     
           
       
       return precioVuelo;
       
-     }     
+    }     
 }

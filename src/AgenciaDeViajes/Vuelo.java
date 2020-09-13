@@ -48,14 +48,10 @@ public class Vuelo {
     
     /*Funcion que indica si el trayecto de un vuelo se encuenta disponible o no*/
     public boolean trayecto(String origen, String destino)
-     {
-       boolean vueloDisponible = true;
+    {
+        boolean vueloDisponible = true;
         
-      String buscarOrigen = JOptionPane.showInputDialog("Ingrese el origen del vuelo").trim();
-      String buscarDestino = JOptionPane.showInputDialog("Ingrese el destino del vuelo").trim();
-      
-                
-          if((this.getOrigen().equals(buscarOrigen)) && this.getDestino().equals(buscarDestino))
+          if((this.getOrigen().equals(origen)) && this.getDestino().equals(destino))
           {
               return vueloDisponible;
           }
@@ -64,9 +60,9 @@ public class Vuelo {
               vueloDisponible = false;
           }
       
-      return vueloDisponible;
+        return vueloDisponible;
       
-     }
+    }
     
     
 }
