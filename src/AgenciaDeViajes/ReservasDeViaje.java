@@ -176,7 +176,7 @@ public class ReservasDeViaje {
   
   public void realizarReserva()
   {
-      JOptionPane.showMessageDialog(null, "Funcion no disponible en el momento");
+      JOptionPane.showMessageDialog(null, "Funcion no disponible en el= JOptionPane.showInputDialog(\"Ingrese el documento de identidad del cliente\").trim(); momento");
   }
 
   public void consultarReserva()
