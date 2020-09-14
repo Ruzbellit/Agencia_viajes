@@ -63,13 +63,15 @@ public class AgenciaDeViajes {
 
                     hoteles.add(new Hotel(estrellas, nombreH, ciudadH, precio));
 
-                    area.setText("Informacion del hotel ingresado con exito\n"
-                            + nombreH + "\n" + estrellas + "\n" + ciudadH + "\n" + precio);
+                    area.setText(
+                            "Informacion del hotel ingresado con exito\n\n"
+                            + nombreH + "\n" + estrellas + "\n" + ciudadH + "\n" + precio
+                    );
                     JOptionPane.showMessageDialog(null, barras);
                     break;
                 case "2": //aerolinea
                     //JOptionPane.showMessageDialog(null, "Opcion no disponible en el momento");
-                    String nombreA = JOptionPane.showInputDialog("Ingrese el nombre de la aerolinea");
+                    String nombreA = JOptionPane.showInputDialog("Ingrese el nombre de la aerolinea").trim().toUpperCase();
                     Aerolinea aerolinea = new Aerolinea(nombreA);
                     String opcionA = "";
 
@@ -81,9 +83,9 @@ public class AgenciaDeViajes {
                             case "0":
                                 break;
                             case "1":
-                                String origenA = JOptionPane.showInputDialog("Ingrese la ciudad de origen del vuelo");
-                                String destinoA = JOptionPane.showInputDialog("Ingrese la ciudad de destino del vuelo");
-                                double precioA = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del vuelo"));
+                                String origenA = JOptionPane.showInputDialog("Ingrese la ciudad de origen del vuelo").trim().toUpperCase();
+                                String destinoA = JOptionPane.showInputDialog("Ingrese la ciudad de destino del vuelo").trim().toUpperCase();
+                                double precioA = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del vuelo").trim());
                                 aerolinea.agregarVuelo(origenA, destinoA, precioA);
                                 break;
                             default:
@@ -91,6 +93,10 @@ public class AgenciaDeViajes {
                         }
                     } while (!opcionA.equals("0"));
                     aerolineas.add(aerolinea);
+
+                    area.setText("Informacion de la aerolina ingresado con exito:\n\n"
+                            + nombreA);
+                    JOptionPane.showMessageDialog(null, barras);
                     break;
 
                 case "3": //medios de transporte
@@ -101,7 +107,7 @@ public class AgenciaDeViajes {
 
                     transportes.add(new TransporteCiudad(ciudadT, precioBus, precioChiva, precioBicicleta));
 
-                    area.setText("Informacion de los medios de trasnporte ingresado con exito"
+                    area.setText("Informacion de los medios de transporte ingresado con exito:\n"
                             + "\nCiudad: " + ciudadT
                             + "\nPrecio pasaje Bus: " + precioBus
                             + "\nPrecio pasaje Chiva: " + precioChiva
@@ -119,7 +125,7 @@ public class AgenciaDeViajes {
 
                     eventosCulturales.add(new EventoCultural(nombreE, ciudadE, costo, horario, fecha, lugar));
 
-                    area.setText("Informacion del evento ingresado con exito"
+                    area.setText("Informacion del evento ingresado con exito\n"
                             + "\nEvento: " + nombreE
                             + "\nCiudad: " + ciudadE
                             + "\nCosto entrada: " + costo
@@ -150,7 +156,64 @@ public class AgenciaDeViajes {
         int diasViaje = Integer.parseInt(JOptionPane.showInputDialog("Digite los dias de viaje").trim());
         int cantidadPersonas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas a viajar").trim());
 
-        listarHoteles(ciudadDestino);
+        String datos = "Opciones disponibles de acuerdo a los parametros indicados\n"
+                + "Ciudad destino: " + ciudadDestino
+                + "\nRango de precio: " + valorMinimo + " - " + valorMaximo
+                + "\nDias de viaje: " + diasViaje
+                + "\nCantidad de personas a viajar: " + cantidadPersonas + "\n";
+        int contador = 1;
+        for (Hotel x : hoteles) {
+            if (x.getCiudad().equals(ciudadDestino)) {
+                double precioTotal = 0;
+                if (x.getPrecio() * diasViaje * cantidadPersonas < valorMaximo) {
+                    precioTotal = x.getPrecio() * diasViaje * cantidadPersonas;
+                    datos += "\n\tOpcion " + contador
+                            + "\nNombre Hotel: " + x.getNombre()
+                            + "\nEstrellas: " + x.getEstrellas()
+                            + "\nPrecio hotel: " + x.getPrecio()
+                            + "\nPrecio Total (Hotel): " + precioTotal;
+                    contador++;
+
+                    datos += "\n\nPosibles eventos a asistir:";
+                    for (EventoCultural e : eventosCulturales) {
+                        if (e.getCiudad().equals(ciudadDestino)) {
+                            datos += "\n" + e.getInformacion();
+
+                            for (TransporteCiudad t : transportes) {
+                                if (t.getCiudad().equals(ciudadDestino)) {
+                                    datos += "\nPrecio Total en Bus (Hotel, Evento, Transporte): ";
+                                    if (precioTotal + t.getPrecio("BUS") * cantidadPersonas * diasViaje < valorMaximo) {
+                                        datos += precioTotal + t.getPrecio("BUS") * cantidadPersonas * diasViaje;
+                                    } else {
+                                        datos += "Excede el precio maximo\n";
+                                    }
+
+                                    datos += "\nPrecio Total en Chiva (Hotel, Evento, Transporte): ";
+                                    if (precioTotal + t.getPrecio("CHIVA") * cantidadPersonas * diasViaje < valorMaximo) {
+                                        datos += precioTotal + t.getPrecio("CHIVA") * cantidadPersonas * diasViaje;
+                                    } else {
+                                        datos += "Excede el precio maximo\n";
+                                    }
+
+                                    datos += "\nPrecio Total en Bicicleta (Hotel, Evento, Transporte): ";
+                                    if (precioTotal + t.getPrecio("BICICLETA") * cantidadPersonas * diasViaje < valorMaximo) {
+                                        datos += precioTotal + t.getPrecio("BICICLETA") * cantidadPersonas * diasViaje + "\n";
+                                    } else {
+                                        datos += "Excede el precio maximo\n";
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                } else {
+                    datos += "No hay opciones disponibles de acuerdo a los parametros indicados";
+                }
+            }
+        }
+        area.setText(datos);
+        JOptionPane.showMessageDialog(null, barras);
     }
 
     /**
@@ -272,9 +335,9 @@ public class AgenciaDeViajes {
 
     private String listarAerolineas(String origen, String destino) {
         String datos = "";
-        for(Aerolinea x: aerolineas){
+        for (Aerolinea x : aerolineas) {
             if (x.consultarVuelo(origen, destino)) {
-                datos += x.getNombre() + "\nPrecio: " + x.precioVuelo(origen, destino);
+                datos += x.getNombre() + "\nPrecio: " + x.precioVuelo(origen, destino) + "\n";
             }
         }
         return datos;
@@ -306,13 +369,13 @@ public class AgenciaDeViajes {
 
         String escogerAerolinea = "Escoja la aerolinea deseada\n" + listarAerolineas("CALI", ciudadDestinoReserva);
         String nombreAerolinea = JOptionPane.showInputDialog(escogerAerolinea).trim().toUpperCase();
-        for (Aerolinea x: aerolineas) {
+        for (Aerolinea x : aerolineas) {
             if (x.getNombre().equals(nombreAerolinea)) {
                 x.precioVuelo("CALI", ciudadDestinoReserva);
                 break;
             }
         }
-        
+
         int viajeros = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas viajar").trim());
 
         String escogerMedioTransporte = "Introduza el tipo de medio de transporte deseado\n" + listarTransporteCiudad(ciudadDestinoReserva);
@@ -397,15 +460,15 @@ public class AgenciaDeViajes {
      */
     private void listadoDePrueba() {
         hoteles.add(new Hotel(3, "INTERCONTINENTAL", "BOGOTA", 60000));
-        hoteles.add(new Hotel(2, "AMERICANO", "MEDELLIN", 20000));
-        /*
-        aerolineas.add(new Aerolinea("Avianca"));
-        aerolineas.add(new Aerolinea("Latam"));
-        */
-        eventosCulturales.add(new EventoCultural("CONCIERTO SHAKIRA", "BOGOTA", 4000, "5 P.M - 10 P.M", "2020-10-12", "SOACHA"));
-        eventosCulturales.add(new EventoCultural("FERIA DE LAS FLORES", "MEDELLIN", 4000, "5 P.M - 10 P.M", "2020-11-02", "CALLE DE LAS FLORES"));
+        hoteles.add(new Hotel(5, "SUPREMO", "BOGOTA", 100000));
+        hoteles.add(new Hotel(3, "AMERICANO", "MEDELLIN", 50000));
+        hoteles.add(new Hotel(5, "PARAISO", "MEDELLIN", 80000));
+        eventosCulturales.add(new EventoCultural("CONCIERTO SHAKIRA", "BOGOTA", 25000, "5 P.M - 10 P.M", "2020-10-12", "SOACHA"));
+        eventosCulturales.add(new EventoCultural("DIA DE LA INDEPENDENCIA", "BOGOTA", 0, "5 P.M - 10 P.M", "2020-07-20", "PALACIO DE NARIÑO"));
+        eventosCulturales.add(new EventoCultural("FERIA DE LAS FLORES", "MEDELLIN", 20000, "5 P.M - 10 P.M", "2020-07-01", "PRINCIPALES AUTOPISTAS"));
+        eventosCulturales.add(new EventoCultural("FIESTA DE LA VIRGEN DEL CARMEN", "MEDELLIN", 4000, "5 P.M - 10 P.M", "2020-07-16", "MUNICIPIO DE FRONTINO"));
         transportes.add(new TransporteCiudad("BOGOTA", 2500, 2000, 1000));
-        transportes.add(new TransporteCiudad("MEDELLIN", 2200, 1600, 500));
+        transportes.add(new TransporteCiudad("MEDELLIN", 2200, 1600, 600));
     }
 
     /**
@@ -419,11 +482,11 @@ public class AgenciaDeViajes {
                     + "Ciudad Actual: Cali\n"
                     + "" + LocalDate.now() + "\n\n"
                     + "1. Ingresar Informacion\n"
-                    + "2. Consultar Opciones Disponibles\n"
-                    + "3. Listar Hoteles\n"
-                    + "4. Listar Eventos Culturales\n"
-                    + "5. Realizar Reservacion\n"
-                    + "6. Consultar Reserva\n"
+                    + "2. Consultar opciones disponibles\n"
+                    + "3. Listar hoteles\n"
+                    + "4. Listar eventos culturales\n"
+                    + "5. Realizar reservacion\n"
+                    + "6. Consultar reserva\n"
                     + "7. Estadisticas\n"
                     + "8. Insertar listados de prueba\n"
                     + "9. Salir");

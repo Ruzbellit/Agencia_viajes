@@ -31,7 +31,7 @@ class TransporteCiudad {
                 return precioBus;
             case "CHIVA":
                 return precioChiva;
-            case "BICLETA":
+            case "BICICLETA":
                 return precioBicicleta;
             default:
                 return 0;
