@@ -164,7 +164,7 @@ public class RegistroAcademico {
                 + "2. Listar estudiantes ingresados\n"
                 + "3. Buscar estudiante con codigo\n"
                 + "4. Listar estudiantes con estimulos academicos\n"
-                + "5. Listar estudiantes con bajo rendimiento(\n"
+                + "5. Listar estudiantes con bajo rendimiento\n"
                 + "6. Salir\n").trim();
         switch (opcion) {
             case "1":
@@ -192,20 +192,8 @@ public class RegistroAcademico {
         menu();
     }
 
-    public void registrarDatosPrueba() {
-        this.listaEstudiantes.add(new Estudiante("Bryan baboso", "2701", 10, "ing sistemas", 5, 4.5, 4.0, 4.9));
-        this.listaEstudiantes.add(new Estudiante("Ruzbellit", "1708", 10, "ing sistemas", 5, 5, 4.9, 4.9));
-        this.listaEstudiantes.add(new Estudiante("Valeria Tabarez", "2303", 5, "Psicologia", 5, 5, 4.9, 4.9));
-        this.listaEstudiantes.add(new Estudiante("George Romero", "2610", 9, "Tec sistemas", 5, 4.5, 3.0, 2.9));
-        this.listaEstudiantes.add(new Estudiante("Yuli Zunga", "0000", 1, "Aseadora", 1.0, 1.2, 0.0, 1.9));
-        this.listaEstudiantes.add(new Estudiante("Leidy Perra ", "1010", 2, "ing sistemas", 3.0, 3.0, 3.0, 1.0));
-        this.listaEstudiantes.add(new Estudiante("Moyano La Grilla", "666", 0, "ing sistemas", 1, 1.5, 3.0, 3.5));
-
-    }
-
     public static void main(String[] args) {
         RegistroAcademico miRegistroAcademico = new RegistroAcademico();
-        miRegistroAcademico.registrarDatosPrueba();
         miRegistroAcademico.menu();
     }
 
