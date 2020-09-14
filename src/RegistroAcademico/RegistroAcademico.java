@@ -27,19 +27,19 @@ public class RegistroAcademico {
     }
 
     public void registrarEstudiante() {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
-        String codigo = JOptionPane.showInputDialog("Ingrese el codigo");
-        int semestre = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de semestre"));
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre").trim();
+        String codigo = JOptionPane.showInputDialog("Ingrese el codigo").trim();
+        int semestre = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de semestre").trim());
         if ((semestre > 10) || (semestre < 1)) 
         {
             JOptionPane.showMessageDialog(null, "El numero de semestre no puede ser superior a 10 ni menor a 12");
-            semestre = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de semestre"));
+            semestre = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de semestre").trim());
         }
-        String plan = JOptionPane.showInputDialog("Ingres el plan");
-        double nota1 = Double.parseDouble(JOptionPane.showInputDialog("Ingres el nota1"));
-        double nota2 = Double.parseDouble(JOptionPane.showInputDialog("Ingres el nota2"));
-        double nota3 = Double.parseDouble(JOptionPane.showInputDialog("Ingres el nota3"));
-        double nota4 = Double.parseDouble(JOptionPane.showInputDialog("Ingres el nota4"));
+        String plan = JOptionPane.showInputDialog("Ingrese el plan");
+        double nota1 = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nota1").trim());
+        double nota2 = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nota2").trim());
+        double nota3 = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nota3").trim());
+        double nota4 = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nota4").trim());
         Estudiante nuevoEstudiante = new Estudiante(nombre, codigo, semestre, plan, nota1, nota2,
                 nota3, nota4);
         this.listaEstudiantes.add(nuevoEstudiante);
@@ -62,7 +62,7 @@ public class RegistroAcademico {
     }
 
     private void buscarEstudianteCodigo() {
-        String elCodigo = JOptionPane.showInputDialog("Ingrese el codigo");
+        String elCodigo = JOptionPane.showInputDialog("Ingrese el codigo").trim();
         boolean encontrado = false;
         for (Estudiante estudiante : this.listaEstudiantes) {
 
@@ -163,9 +163,9 @@ public class RegistroAcademico {
                 + "1. Registrar un estudiante\n"
                 + "2. Listar estudiantes ingresados\n"
                 + "3. Buscar estudiante con codigo\n"
-                + "4. Listar estudiantes con estimulos acaemicos\n"
+                + "4. Listar estudiantes con estimulos academicos\n"
                 + "5. Listar estudiantes con bajo rendimiento(\n"
-                + "6. Salir\n");
+                + "6. Salir\n").trim();
         switch (opcion) {
             case "1":
                 registrarEstudiante();
