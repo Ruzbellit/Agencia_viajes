@@ -52,7 +52,7 @@ public class Reserva {
         return this.idCliente;
     }
     
-    public String getCiudadDstino(){
+    public String getCiudadDestino(){
         return this.ciudadDestino;
     }
     
