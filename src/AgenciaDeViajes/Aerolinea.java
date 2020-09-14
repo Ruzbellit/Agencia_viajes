@@ -21,6 +21,7 @@ public class Aerolinea {
      Aerolinea(String nombre)
         {
           this.nombre = nombre;
+          vuelos = new ArrayList <>();
         }
      
      /*Funcion que obtiene el nombre de la aerolinea*/
