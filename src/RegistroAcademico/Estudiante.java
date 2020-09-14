@@ -1,10 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  Autor: Ruzbellit Rossy Romero Ramirez (1925456)
+  Email: ruzbellit.romero@correounivalle.edu.co
+  Autor: Daniel Rodriguez Sanchez (1927631)
+  Email: daniel.rodriguez.sanchez@correounivalle.edu.co
+  Autor: Christian Villanueva Paez
+  Email: christian.villanueva@correounivalle.edu.coFecha creación: 2019-11-08
+  Fecha última modificación: 2020-09-14
+*/
 package RegistroAcademico;
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
  *
  * @author ruzbe
@@ -15,7 +20,7 @@ public class Estudiante {
     private String codigo;
     private int semestre;
     private String plan;
-    private double notas[];
+    private double[] notas;
     
     Estudiante(String nombre, String codigo, int semestre,
             String plan, double nota1, double nota2, double nota3,
@@ -24,8 +29,7 @@ public class Estudiante {
         this.codigo = codigo;
         this.semestre = semestre;
         this.plan = plan;
-        this.notas = new double[4];
-        double notas[] = {nota1, nota2, nota3, nota4};
+        this.notas = new double[]{nota1, nota2, nota3, nota4};
     }
     
     public String getNombre()
@@ -38,6 +42,16 @@ public class Estudiante {
         return this.codigo;
     }
     
+    public int getSemestre()
+    {
+        return this.semestre;
+    }
+    
+    public String getPlan()
+    {
+        return this.plan;
+    }
+    
     public double[] getArrayNotas()
     {
         return this.notas;
@@ -46,7 +60,7 @@ public class Estudiante {
     public double getPromedio()
     {
         double suma = 0;
-        for(double nota: this.notas)
+        for(double nota : this.notas)
         {
            suma += nota;
         }
@@ -56,10 +70,10 @@ public class Estudiante {
 
     public String getStringNotas()
     {
-        String acumulNotas = "\n";
+        String acumulNotas = ", ";
         for(double nota: this.notas)
         {
-            acumulNotas = "Nota: " + Double.toString(nota) + "\n";
+            acumulNotas += Double.toString(nota) + ", ";
         }
         return acumulNotas;
     }
