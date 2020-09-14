@@ -156,7 +156,7 @@ public class AgenciaDeViajes {
         int diasViaje = Integer.parseInt(JOptionPane.showInputDialog("Digite los dias de viaje").trim());
         int cantidadPersonas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de personas a viajar").trim());
 
-        String datos = "Opciones disponibles de acuerdo a los parametros indicados\n"
+        String datos = "Opciones disponibles de acuerdo a los parametros indicados:\n"
                 + "Ciudad destino: " + ciudadDestino
                 + "\nRango de precio: " + valorMinimo + " - " + valorMaximo
                 + "\nDias de viaje: " + diasViaje
