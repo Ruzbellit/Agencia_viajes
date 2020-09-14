@@ -14,6 +14,13 @@ class TransporteCiudad {
     private String ciudad;
     private double precioBus, precioChiva, precioBicicleta;
 
+    /**
+     * inicializa los atributos con los parametros ingresados
+     * @param ciudad
+     * @param precioBus
+     * @param precioChiva
+     * @param precioBicicleta 
+     */
     TransporteCiudad(String ciudad, double precioBus, double precioChiva, double precioBicicleta) {
         this.ciudad = ciudad;
         this.precioBus = precioBus;
@@ -21,10 +28,19 @@ class TransporteCiudad {
         this.precioBicicleta = precioBicicleta;
     }
 
+    /**
+     *
+     * @return ciudad
+     */
     public String getCiudad() {
         return ciudad;
     }
 
+    /**
+     * 
+     * @param tipoTransporte
+     * @return precio del tipo de transporte
+     */
     public double getPrecio(String tipoTransporte) {
         switch (tipoTransporte) {
             case "BUS":
@@ -38,6 +54,10 @@ class TransporteCiudad {
         }
     }
 
+    /**
+     * lista los precios de los tipos de transporte
+     * @return lista de precios
+     */
     public String getInformacionPrecios() {
         return "Bus: " + precioBus
                 + "\nChiva: " + precioChiva
