@@ -56,6 +56,14 @@ public class Reserva {
         return this.ciudadDestino;
     }
     
+    public String getHotel(){
+        return this.nombreHotel;
+    }
+    
+    public int getViajeros(){
+        return this.viajeros;
+    }
+    
     public double costoTotalHotel(){
         return this.costoHotel * this.diasViaje * this.viajeros;
     }
