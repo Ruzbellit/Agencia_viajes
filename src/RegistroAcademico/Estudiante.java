@@ -3,8 +3,8 @@
   Email: ruzbellit.romero@correounivalle.edu.co
   Autor: Daniel Rodriguez Sanchez (1927631)
   Email: daniel.rodriguez.sanchez@correounivalle.edu.co
-  Autor: Christian Villanueva Paez
-  Email: christian.villanueva@correounivalle.edu.coFecha creación: 2019-11-08
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
   Fecha última modificación: 2020-09-14
 */
 package RegistroAcademico;
@@ -109,5 +109,4 @@ public class Estudiante {
         }
         return acumulNotas;
     }
-
 }

@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  Autor: Ruzbellit Rossy Romero Ramirez (1925456)
+  Email: ruzbellit.romero@correounivalle.edu.co
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
+  Autor: Daniel Rodriguez Sanchez (1927631)
+  Email: daniel.rodriguez.sanchez@correounivalle.edu.co
+  Fecha última modificación: 2020-09-14
+*/
 package AgenciaDeViajes;
 
 import java.time.*;
@@ -28,6 +32,9 @@ public class Reserva {
     private String infoEventos;
     private double costoEventos;
     
+     /**
+     * inicializa los datos de la reserva.
+     */
     Reserva(String idCliente, LocalDate fechaViaje, LocalDate fechaRegreso, int viajeros, 
             String ciudadDestino, int diasViaje, String nombreHotel, 
             double costoHotel, String nombreAerolinea, double costoAerolinea, String tipoTransporte,
@@ -48,35 +55,68 @@ public class Reserva {
         this.costoEventos = costoEventos;
     }
     
+     /**
+     * Muestra la identificacion del cliente.
+     * @return String con la identificacion del cliente.
+     */
     public String getIdentCliente(){
         return this.idCliente;
     }
     
+    /**
+     * Muestra la ciudad del destino donde desea ir el cliente.
+     * @return String con el nombre de la ciudad de destino.
+     */
     public String getCiudadDestino(){
         return this.ciudadDestino;
     }
     
+    /**
+     * Muestra el hotel donde desea hospedarse el cliente.
+     * @return String con el nombre del hotel.
+     */
     public String getHotel(){
         return this.nombreHotel;
     }
     
+    /**
+     * Muestra la cantidad de personas que viajaran.
+     * @return int con el numero de personas que viajaran.
+     */
     public int getViajeros(){
         return this.viajeros;
     }
     
+    /**
+     * Muestra el costo total que se gastara en el hotel por los
+     * dias y personas que se hospedaran.
+     * @return double con el costo total de solo el hotel.
+     */
     public double costoTotalHotel(){
         return this.costoHotel * this.diasViaje * this.viajeros;
     }
     
+     /**
+     * Muestra el costo total que se gastara en el transporte.
+     * @return double con el costo total de solo el transporte para todas las personas.
+     */
     public double costoTotalTransporte(){
         return this.costoTransporte * this.viajeros;
     }
 
+     /**
+     * Muestra el costo total del viaje completo con hoteles, transpote s aerolineas.
+     * @return double con el costo total de todo el viaje.
+     */
     public double costoViajeTotal() {
         return costoTotalHotel() +  this.costoEventos + 
                 (this.costoTransporte * this.viajeros) + (this.costoAerolinea * this.viajeros);
     }
     
+     /**
+     * Muestra la informacion total de la reserva.
+     * @return String con toda la informacion del viaje.
+     */
     public String getInformacion() {
         String infoReserva = "ID Cliente: " + this.idCliente +
                 "\nFecha de Viaje: " + this.fechaViaje.toString() +

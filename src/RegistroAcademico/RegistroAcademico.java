@@ -3,8 +3,8 @@
   Email: ruzbellit.romero@correounivalle.edu.co
   Autor: Daniel Rodriguez Sanchez (1927631)
   Email: daniel.rodriguez.sanchez@correounivalle.edu.co
-  Autor: Christian Villanueva Paez
-  Email: christian.villanueva@correounivalle.edu.coFecha creación: 2019-11-08
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
   Fecha última modificación: 2020-09-14
  */
 package RegistroAcademico;
@@ -22,6 +22,7 @@ import javax.swing.*;
  *
  * @author ruzbe
  */
+
 public class RegistroAcademico {
 
     private ArrayList<Estudiante> listaEstudiantes;
@@ -30,6 +31,9 @@ public class RegistroAcademico {
     JTextArea area;
     JScrollPane barras;
 
+    /**
+     * Inicializa listas y areas de texto.
+     */
     RegistroAcademico() {
         this.listaEstudiantes = new ArrayList<>();
         
@@ -174,18 +178,20 @@ public class RegistroAcademico {
                     listaEstudiantesEstimulo += "Puesto " + puestoEstimulo + "\n"
                             + "Nombre: " + estudiantesCandidatos.get(i).getNombre() + "\n"
                             + "Promedio: " + Double.toString(estudiantesCandidatos.get(i).getPromedio()) + "\n";
-                    // estudiantesCandidatos.remove(i);
                 } else {
                     estudiantesSinGanar.add(estudiantesCandidatos.get(i));
                 }
             }
             estudiantesCandidatos = estudiantesSinGanar;
-            // estudiantesEstimulo.remove();
             puestoEstimulo++;
         } while (puestoEstimulo < 6);
         JOptionPane.showMessageDialog(null, listaEstudiantesEstimulo);
     }
 
+    /**
+     * Lista los estudiantes que estan en bajo rendimiento academico segun
+     * sus calificaciones y promedio.
+     */
     public void listarEstudiantesBajos() {
         String estudiantesEnBajos = "";
         for (Estudiante estudiante : this.listaEstudiantes) {
@@ -207,6 +213,9 @@ public class RegistroAcademico {
         JOptionPane.showMessageDialog(null, estudiantesEnBajos);
     }
 
+    /**
+     * Despliega todas las opciones a elegir.
+     */
     public void menu() {
         String opcion = JOptionPane.showInputDialog("Escoga el tipo de informacion que desea ingresar\n"
                 + "1. Registrar un estudiante\n"
@@ -240,27 +249,12 @@ public class RegistroAcademico {
         }
         menu();
     }
-
-    public void registrarDatosPrueba() {
-        this.listaEstudiantes.add(new Estudiante("Bryan baboso", "2701", 10, "ing sistemas", 5, 4.5, 4.0, 4.9));
-        this.listaEstudiantes.add(new Estudiante("Ruzbellit", "1708", 10, "ing sistemas", 5, 5, 4.9, 4.9));
-        this.listaEstudiantes.add(new Estudiante("Valeria Tabarez", "2303", 5, "Psicologia", 5, 5, 4.9, 4.9));
-        this.listaEstudiantes.add(new Estudiante("George Romero", "2610", 9, "Tec sistemas", 5, 4.5, 3.0, 2.9));
-        this.listaEstudiantes.add(new Estudiante("Yuli Zunga", "0000", 1, "Aseadora", 1.0, 1.2, 0.0, 1.9));
-        this.listaEstudiantes.add(new Estudiante("Leidy Perra ", "1010", 2, "ing sistemas", 3.0, 3.0, 3.0, 1.0));
-        this.listaEstudiantes.add(new Estudiante("Moyano La Grilla", "666", 2, "ing sistemas", 1, 1.5, 3.0, 3.5));
-        this.listaEstudiantes.add(new Estudiante("Christian villa", "666", 5, "ing sistemas", 5, 5, 5, 5));
-        this.listaEstudiantes.add(new Estudiante("Daniel Rodriguez", "333", 8, "ing sistemas", 4.9, 4.8, 4.7, 5.0));
-        this.listaEstudiantes.add(new Estudiante("Emily", "69", 1, "ing sistemas", 4, 4.5, 4.0, 4.5));
-        this.listaEstudiantes.add(new Estudiante("Yenny", "77", 2, "ing sistemas", 4, 4.5, 4.0, 4.5));
-        this.listaEstudiantes.add(new Estudiante("Sara", "1234", 2, "ing sistemas", 4, 4, 4.0, 4));
-        this.listaEstudiantes.add(new Estudiante("lidia", "111", 2, "ing sistemas", 4.3, 4.5, 4.8, 4.5));
-        this.listaEstudiantes.add(new Estudiante("lidia", "111", 2, "ing sistemas", 4.3, 4.5, 4.8, 4.5));
-    }
-
+    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         RegistroAcademico miRegistroAcademico = new RegistroAcademico();
-        miRegistroAcademico.registrarDatosPrueba();
         miRegistroAcademico.menu();
     }
 

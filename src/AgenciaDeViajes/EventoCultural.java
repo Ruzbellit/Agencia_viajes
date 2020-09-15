@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  Autor: Ruzbellit Rossy Romero Ramirez (1925456)
+  Email: ruzbellit.romero@correounivalle.edu.co
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
+  Autor: Daniel Rodriguez Sanchez (1927631)
+  Email: daniel.rodriguez.sanchez@correounivalle.edu.co
+  Fecha última modificación: 2020-09-14
+*/
 package AgenciaDeViajes;
 import javax.swing.*;
 import java.time.*;
@@ -19,6 +23,9 @@ public class EventoCultural {
     private LocalDate fecha;
     private String lugar;
     
+    /**
+     * inicializa los datos de un evento cultural.
+     */
     EventoCultural(String nombreEvento, String ciudad, double costo, 
             String horario, String fecha, String lugar){
        this.nombreEvento = nombreEvento;
@@ -29,22 +36,42 @@ public class EventoCultural {
        this.lugar = lugar;
    }
     
+    /**
+     * Obtiene el nombre del evento.
+     * @return String con el nombre del evento
+     */
     public String getNombre(){
         return this.nombreEvento;
     }
     
+    /**
+     * Obtiene el nombre de la ciudad en que se hará el evento.
+     * @return String con el nombre de la ciudad del evento
+     */
     public String getCiudad(){
         return this.ciudad;
     }
     
+    /**
+     * Obtiene el costo del evento.
+     * @return double con el costo del evento.
+     */
     public double getCosto(){
         return this.costo;
     }
     
+    /**
+     * Obtiene la fecha del evento.
+     * @return LocalDate con la fecha del evento.
+     */
     public LocalDate getFecha(){
         return this.fecha;
     }
     
+    /**
+     * Obtiene toda la informacion del evento.
+     * @return String con la informacion del evento.
+     */
     public String getInformacion(){
         String infoTotal = "Evento: " + getNombre() +
                 "\nCiudad: " + this.ciudad +
