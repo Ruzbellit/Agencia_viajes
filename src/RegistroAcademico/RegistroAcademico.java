@@ -160,7 +160,7 @@ public class RegistroAcademico {
 
         int puestoEstimulo = 1;
         ArrayList<Estudiante> estudiantesEstimulo = new ArrayList<>();
-        String listaEstudiantesEstimulo = "";
+        String listaEstudiantesEstimulo = "Estudiantes con estimulo: \n";
         do {
             // promedio máximo
             double promedioMax = 0;
@@ -184,8 +184,10 @@ public class RegistroAcademico {
             }
             estudiantesCandidatos = estudiantesSinGanar;
             puestoEstimulo++;
-        } while (puestoEstimulo < 6);
+        } 
+        while (puestoEstimulo < 6);
         JOptionPane.showMessageDialog(null, listaEstudiantesEstimulo);
+        
     }
 
     /**
@@ -193,7 +195,7 @@ public class RegistroAcademico {
      * sus calificaciones y promedio.
      */
     public void listarEstudiantesBajos() {
-        String estudiantesEnBajos = "";
+        String estudiantesEnBajos = "Estudiantes con bajo rendimiento: \n";
         for (Estudiante estudiante : this.listaEstudiantes) {
             int materiasPerdidas = 0;
             for (double nota : estudiante.getArrayNotas()) {
