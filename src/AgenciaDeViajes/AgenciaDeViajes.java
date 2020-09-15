@@ -516,28 +516,10 @@ public class AgenciaDeViajes {
     }
 
     /**
-     * agrega un hotel, una aerolinea, un evento y medios de transportes a las
-     * listas iniciales
-     */
-    private void listadoDePrueba() {
-        hoteles.add(new Hotel(3, "INTERCONTINENTAL", "BOGOTA", 60000));
-        hoteles.add(new Hotel(5, "SUPREMO", "BOGOTA", 100000));
-        hoteles.add(new Hotel(3, "AMERICANO", "MEDELLIN", 50000));
-        hoteles.add(new Hotel(5, "PARAISO", "MEDELLIN", 80000));
-        eventosCulturales.add(new EventoCultural("CONCIERTO SHAKIRA", "BOGOTA", 25000, "5 P.M - 10 P.M", "2020-10-12", "SOACHA"));
-        eventosCulturales.add(new EventoCultural("DIA DE LA INDEPENDENCIA", "BOGOTA", 0, "5 P.M - 10 P.M", "2020-07-20", "PALACIO DE NARIÑO"));
-        eventosCulturales.add(new EventoCultural("FERIA DE LAS FLORES", "MEDELLIN", 20000, "5 P.M - 10 P.M", "2020-07-01", "PRINCIPALES AUTOPISTAS"));
-        eventosCulturales.add(new EventoCultural("FIESTA DE LA VIRGEN DEL CARMEN", "MEDELLIN", 4000, "5 P.M - 10 P.M", "2020-07-16", "MUNICIPIO DE FRONTINO"));
-        transportes.add(new TransporteCiudad("BOGOTA", 2500, 2000, 1000));
-        transportes.add(new TransporteCiudad("MEDELLIN", 2200, 1600, 600));
-    }
-
-    /**
      * despliega todas las opciones a elegir, ademas de la fecha actual
      */
     private void menu() {
         String opcion;
-        boolean insertarListadoPrueba = false;
         do {
             opcion = JOptionPane.showInputDialog("Viajemos por Colombia\n\n"
                     + "Ciudad Actual: Cali\n"
@@ -549,8 +531,7 @@ public class AgenciaDeViajes {
                     + "5. Realizar reservacion\n"
                     + "6. Consultar reserva\n"
                     + "7. Estadisticas\n"
-                    + "8. Insertar listados de prueba\n"
-                    + "9. Salir");
+                    + "8. Salir");
 
             switch (opcion) {
                 case "1": //ingresar informacion
@@ -576,19 +557,13 @@ public class AgenciaDeViajes {
                 case "7": //mostrar estadisticas
                     estadisticas();
                     break;
-                case "8": //insertar listado de prueba, solo una vez
-                    if (!insertarListadoPrueba) {
-                        listadoDePrueba();
-                        insertarListadoPrueba = true;
-                    }
-                    break;
-                case "9": //salir
+                case "8": //salir
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                     break;
             }
-        } while (!opcion.equals("9"));
+        } while (!opcion.equals("8"));
     }
 
     /**
