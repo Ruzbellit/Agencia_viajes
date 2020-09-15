@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  Autor: Ruzbellit Rossy Romero Ramirez (1925456)
+  Email: ruzbellit.romero@correounivalle.edu.co
+  Autor: Daniel Rodriguez Sanchez (1927631)
+  Email: daniel.rodriguez.sanchez@correounivalle.edu.co
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
+  Fecha última modificación: 2020-09-14
+*/
 package AgenciaDeViajes;
 
 import javax.swing.JOptionPane;
@@ -17,36 +21,52 @@ public class Vuelo {
     private String destino;
     private double precio;
     
-    /*Funcion que crear el vuelo, ciudad de origen, destino y precio*/
+     /**
+     * Inicializa atributos, datos del vuelo.
+     * @param origen lugar donde inicia
+     * @param destino lugar donde va a llegar
+     * @param precio valor del vuelo
+     */
     Vuelo(String origen, String destino, double precio)
     {
         this.origen = origen;
         this.destino = destino;
-        this.precio = precio;
-        
+        this.precio = precio;  
     }
     
-    /*Funcion que devuelve el origen desde la que sale el vuelo*/
+    /**
+     * devuelve el lugar donde sale el vuelo.
+     * @return String ciudad donde sale el vuelo
+     */
     public String getOrigen()
     {
-        return this.origen;
-        
+        return this.origen;  
     }
     
-    /*Funcion que devuelve el destino a donde llegara el vuelo*/
+    /**
+     * devuelve el lugar donde llega el vuelo.
+     * @return String con la ciudad donde llega el vuelo.
+     */
     public String getDestino()
     {
         return this.destino;
-        
     }
     
-    /*Funcion que retorna el precio del vuelo*/
+    /**
+     * devuelve el valor del vuelo.
+     * @double con el valor del vuelo
+     */
     public double getPrecio()
     {
         return this.precio;
     }
     
-    /*Funcion que indica si el trayecto de un vuelo se encuenta disponible o no*/
+    /**
+     * indica si el trayecto de un vuelo se encuenta disponible o no.
+     * @return boolean que indica si hay o no vuelos
+     * @param String lugar origen
+     * @param String lugar destino
+     */
     public boolean trayecto(String origen, String destino)
     {
         boolean vueloDisponible = true;

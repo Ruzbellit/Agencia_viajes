@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  Autor: Ruzbellit Rossy Romero Ramirez (1925456)
+  Email: ruzbellit.romero@correounivalle.edu.co
+  Autor: Daniel Rodriguez Sanchez (1927631)
+  Email: daniel.rodriguez.sanchez@correounivalle.edu.co
+  Autor: Christian Villanueva Paez (1924546)
+  Email: christian.villanueva@correounivalle.edu.co
+  Fecha última modificación: 2020-09-14
+*/
 package AgenciaDeViajes;
 
 
@@ -17,20 +21,31 @@ public class Aerolinea {
     
     ArrayList<Vuelo> vuelos;
 
-    /*Funcion que crea la aerolinea con su nombre*/
+    /**
+     * Inicializa atributos, datos de la aerolinea.
+     * @param String nombre de la aerolinea 
+     */
      Aerolinea(String nombre)
         {
           this.nombre = nombre;
           vuelos = new ArrayList <>();
         }
      
-     /*Funcion que obtiene el nombre de la aerolinea*/
+     /**
+     * obtiene el nombre de la aerolinea.
+     * @return String con el nombre de la aerolinea 
+     */
      public String getNombre()
      {
          return this.nombre;
      }
      
-     /*Funcion que indica si un vuelo se encuenta disponible o no*/
+      /**
+     * indica si un vuelo se encuenta disponible o no.
+     * @param String con la ciudad de origen
+     * @param String con la ciudad de destino
+     * @return boolean indicando si hay o no vuelos con esos destinos
+     */
      public boolean consultarVuelo(String origen, String destino)
      {
        boolean vueloDisponible = true;
@@ -52,7 +67,12 @@ public class Aerolinea {
       
      }
      
-    /*Funcion que retorna el precio de un vuelo al consultar su origen y destino*/     
+     /**
+     * obtiene el precio de un vuelo al consultar su origen y destino.
+     * @param String con la ciudad de origen
+     * @param String con la ciudad de destino
+     * @return double con el precio del vuelo. 
+     */
     public double precioVuelo(String origen, String destino)
     {
       double precioVuelo = 0;
@@ -63,20 +83,19 @@ public class Aerolinea {
           {
               precioVuelo = x.getPrecio();
           }
-      }     
-          
-      
+      }         
       return precioVuelo;
-      
     }
     
+     /**
+     * agrega un vuelo a su lista de vuelos.
+     * @param String con la ciudad de origen
+     * @param String con la ciudad de destino 
+     * @param double con el precio del vuelo
+     */
     public void agregarVuelo (String origen, String destino, double precio)
     {   
-        
-        vuelos.add(new Vuelo(origen, destino, precio));
-        
+        vuelos.add(new Vuelo(origen, destino, precio)); 
     }
-    
-    
-    
+
 }
